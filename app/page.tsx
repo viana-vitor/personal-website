@@ -2,12 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { TwitterIcon, GitHubIcon } from "@/components/icons";
+import { getLatestTweet } from "@/lib/twitter";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const revalidate = 60;
 
-export default function Home() {
+export default async function Home() {
+  // let latestTweet;
+
+  // try {
+  //   latestTweet = await getLatestTweet();
+  // } catch (error) {
+  //   console.log(error);
+  // }
+
   return (
     <section>
       <h1 className="font-bold text-3xl font-serif">Vitor Viana</h1>
@@ -18,7 +27,7 @@ export default function Home() {
         <Image
           alt="name"
           src="/images/avatar.jpeg "
-          className="rounded-full grayscale"
+          className="rounded-full grayscale h-28 w-28 object-cover"
           width={100}
           height={100}
           priority
