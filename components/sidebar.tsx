@@ -28,7 +28,7 @@ export default function Sidebar() {
     <aside className="md:w-[150px] md:flex-shrink-0 -mx-4 md:mx-0 md:px-0 font-serif">
       <div className="lg:sticky lg:top-20">
         <LayoutGroup>
-          <nav className="flex flex-row md:flex-col items-start relative px-4">
+          <nav className="flex flex-row md:flex-col items-start relative px-4 md:px-0 md:overflow-auto scroll-pr-6 md:relative">
             <div className="flex flex-row md:flex-col space-x-0 pr-10">
               {Object.entries(navItems).map(([path, { name }]) => {
                 const isActive = path === pathname;
@@ -37,7 +37,7 @@ export default function Sidebar() {
                     key={path}
                     href={path}
                     className={clsx(
-                      "transition-all hover:text-neutral-800 dark:text-neutral-200 flex align-middle",
+                      "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle",
                       {
                         "text-neutral-500": !isActive,
                         "font-bold": isActive,
