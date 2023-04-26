@@ -2,20 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { TwitterIcon, GitHubIcon } from "@/components/icons";
-import { getLatestTweet } from "@/lib/twitter";
+import { getTwitterMetrics } from "@/lib/twitter";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const revalidate = 60;
 
 export default async function Home() {
-  // let latestTweet;
+  let tweetCount;
 
-  // try {
-  //   latestTweet = await getLatestTweet();
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  try {
+    tweetCount = await getTwitterMetrics();
+  } catch (error) {
+    console.log(error);
+  }
 
   return (
     <section>
@@ -38,7 +38,8 @@ export default async function Home() {
             href="https://twitter.com/vitoroliviana"
             className="flex items-center gap-2"
           >
-            <TwitterIcon /> Twitter count
+            <TwitterIcon />
+            {`${tweetCount?.toLocaleString()} total tweets`}
           </a>
           <a
             target="_blank"
